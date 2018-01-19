@@ -1,0 +1,151 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+body {
+    background-color: #263c5a;
+}
+
+.screen {
+    margin: 0 auto;
+    width: 640px;
+    height: 480px;
+    background: url("../../public/images/background.jpg");
+
+}
+
+.header {
+    text-align: center;
+    width: 100%;
+    height: 183px;
+    position: relative;
+    background: url("../../public/images/home-mask.png");
+}
+.header .logo {
+    position: relative;
+    -webkit-animation: headerLogo 1s 1 ease-out;
+    -o-animation:headerLogo 1s 1 ease-out;
+    -moz-animation:headerLogo 1s 1 ease-out;
+    animation:headerLogo 1s 1 ease-out;
+}
+.header .ninja {
+    position: relative;
+    opacity: 1;
+    -webkit-animation: headerNinja 1s  1 ease-out;
+    -o-animation:headerNinja 1s  1 ease-out;
+    -moz-animation:headerNinja 1s  1 ease-out;
+    animation:headerNinja 1s  1 ease-out;
+}
+.homeDesc {
+    position: relative;
+    -webkit-animation: homeTrans 1.5s 1 ease;
+    -o-animation:homeTrans 1.5s 1 ease;
+    -moz-animation:homeTrans 1.5s 1 ease;
+    animation:homeTrans 1.5s 1 ease;
+}
+
+.new {
+    position: relative;
+    -moz-animation: newTrans 0.5s infinite ease-out alternate;
+    -webkit-animation:newTrans 0.5s infinite ease-out alternate;
+    -o-animation:newTrans 0.5s infinite ease-out alternate;
+    animation:newTrans 0.5s infinite ease-out alternate;
+}
+@keyframes newTrans {
+    0% {top: 40px}
+    100% {top: 50px}
+}
+.content {
+    width: 100%;
+    height: 297px;
+    -moz-animation: antSwingIn 2.5s 1 ease-out;
+    -webkit-animation:antSwingIn 2.5s 1 ease-out;
+    -o-animation:antSwingIn 2.5s 1 ease-out;
+    animation:antSwingIn 2.5s 1 ease-out;
+}
+
+
+.content .btn1 {
+    background: url("../../public/images/dojo.png");
+    width: 175px;
+    height: 175px;
+    display: inline-block;
+    text-align: center;
+    line-height: 220px;
+    margin: 20px 20px;
+    -moz-animation: btnRotate 100s infinite linear alternate;
+    -webkit-animation:btnRotate 100s infinite linear alternate;
+    -o-animation:btnRotate 100s infinite linear alternate;
+    animation:btnRotate 100s infinite linear alternate;
+}
+
+.content img {
+    -moz-animation: btmImgRotate 50s infinite linear alternate;
+    -webkit-animation:btmImgRotate 50s infinite linear alternate;
+    -o-animation:btmImgRotate 50s infinite linear alternate;
+    animation:btmImgRotate 50s infinite linear alternate;
+}
+
+.content .btn2 {
+    width: 195px;
+    height: 195px;
+    display: inline-block;
+    text-align: center;
+    line-height: 270px;
+    background: url("../../public/images/new-game.png");
+    -moz-animation: btnRotate 100s infinite linear alternate;
+    -webkit-animation:btnRotate 100s infinite linear alternate;
+    -o-animation:btnRotate 100s infinite linear alternate;
+    animation:btnRotate 100s infinite linear alternate;
+}
+
+.content .btn3 {
+    width: 141px;
+    height: 141px;
+    display: inline-block;
+    text-align: center;
+    line-height: 180px;
+    margin-top: 20px;
+    margin-left: 30px;
+    background: url("../../public/images/quit.png");
+    -moz-animation: btnRotate 50s infinite linear alternate;
+    -webkit-animation:btnRotate 50s infinite linear alternate;
+    -o-animation:btnRotate 50s infinite linear alternate;
+    animation:btnRotate 50s infinite linear alternate;
+}
+
+@keyframes headerLogo {
+    from {top:-110px; opacity: 0}
+    to {top: 0px; opacity: 1}
+}
+@keyframes headerNinja {
+    from {left: 200px}
+    to {left: 0px}
+}
+@keyframes antSwingIn{
+    0% {opacity: 0}
+    50% {opacity: 0}
+    100% {opacity: 1}
+}
+@keyframes homeTrans {
+    0% {opacity: 0}
+    50% {opacity: 0}
+    100% {opacity: 1}
+}
+@keyframes btnRotate {
+    from {transform: rotate(0deg) scale(1.1)}
+    to {transform: rotate(3600deg) scale(1)}
+}
+@keyframes btmImgRotate {
+    from {transform: rotate(0deg)}
+    to {transform: rotate(-3600deg)}
+}
+
+.footer {
+    text-align: center;
+    color: white;
+}
+.footer a{
+    color: white;
+}

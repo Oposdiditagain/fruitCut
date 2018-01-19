@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="container">
+		<div class="haorooms-dot ">
+			<div class="xixi"></div>
+		</div>	
+	</div>
+	<svg width="500" height="350" viewBox="0 0 500 350">
+		  <path id="motionPath" fill="none" stroke="#000000" stroke-miterlimit="10" d="M0,20 L80,20 L100,60 L330,20 L370,20"/>
+		   
+		  <circle id="circle" r="10" cx="0" cy="0" fill="tomato" />
+		    
+		  <animateMotion
+		           xlink:href="#circle"
+		           dur="5s"
+		           begin="0s"
+		           fill="freeze"
+		           repeatCount="indefinite">
+		    <mpath xlink:href="#motionPath" />
+		  </animateMotion>
+	</svg>  
+<style>
+	.container {
+		width: 500px;
+		height: 500px;
+		background: black;
+		margin: 200px;
+	}
+    .haorooms-dot {
+        width:20px;
+        height:20px;
+        background: yellow;
+      -webkit-animation: xAxis 2.5s infinite ease-in;;
+      animation: xAxis 2.5s infinite ease-in;
+        position:relative;
+ 
+    }
+ 
+    .xixi {
+      display: block;
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+      background-color: red;
+      -webkit-animation: yAxis 2.5s infinite ease-out;
+      animation: yAxis 2.5s infinite ease-out;
+      position:absolute;
+    }
+ 
+    @-webkit-keyframes yAxis {
+      50% {
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+        -webkit-transform: translateY(-150px);
+        transform: translateY(-150px);
+      }
+    }
+ 
+    @keyframes yAxis {
+      50% {
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function:ease-out;
+        -webkit-transform: translateY(-150px);
+        transform: translateY(-150px);
+      }
+    }
+ 
+    @-webkit-keyframes xAxis {
+      50% {
+        -webkit-animation-timing-function:ease-in;
+        animation-timing-function: ease-in;
+        -webkit-transform: translateX(150px);
+        transform: translateX(150px);
+      }
+    }
+ 
+    @keyframes xAxis {
+      50% {
+        -webkit-animation-timing-function:ease-in;
+        animation-timing-function: ease-in;
+        -webkit-transform: translateX(150px);
+        transform: translateX(150px);
+      }
+    }
+</style>
+</body>
+</html>

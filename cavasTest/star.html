@@ -1,0 +1,86 @@
+<!-- 2015/03/12  -->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <canvas id="canvas" width="1024" height="1768" style="border: 1px solid gray; display:block; margin: 50px auto auto;">
+        请更换更高级版本浏览器
+ </canvas>
+    <script>
+       window.onload = function () {
+           var canvas = document.getElementById("canvas");
+ var context = canvas.getContext("2d");
+ var inter;  //循环变量
+ var e;   //鼠标事件全局变量
+ 
+ //鼠标按下
+ canvas.onmousedown = function (eve) {
+               e = eve;
+ inter = setInterval(function () {
+                   interFun(e);
+ },50);
+ }
+ 
+           //鼠标移动时，改变全局的鼠标事件变量，供循环函数使用
+ canvas.onmousemove = function (eve) {
+               e = eve; //将鼠标移动事件变量赋值给全局
+ }
+           //当鼠标弹起时
+ document.onmouseup = function (e) {
+               clearInterval(inter);
+ }
+ 
+           //循环函数
+ function interFun(e) {
+               var mouseX = e.clientX + document.body.scrollLeft - document.body.clientLeft - canvas.offsetLeft;
+ var mouseY = e.clientY + document.body.scrollTop  - document.body.clientTop - canvas.offsetTop;
+ console.log(mouseX);
+ console.log(mouseY);
+ context.beginPath();
+ drawStar(context, mouseX, mouseY);
+ context.closePath();
+ context.fill();
+ context.stroke();
+ }
+       }
+ 
+       //将角度转换为弧度
+ function toRadian(angle){
+            return Math.PI * angle / 180;
+ }
+ 
+        //随机画星星
+ function drawStar(ctx, mouseX, mouseY){
+            var starSize = new Array(10, 50);   //控制星星大小范围，半径尺寸
+ const colors = ["#33B5E5","#0099CC","#AA66CC","#9933CC","#99CC00","#669900","#FFBB33","#FF8800","#FF4444","#CC0000","#005588"];
+ var startAngle = Math.ceil(Math.random() * 90);
+ LR = Math.ceil(Math.random() * 30 + starSize[0]);
+ SR = (Math.random() * 0.1 + 0.4) * LR;
+ var randomNumA = Math.random() * 151 - 75;
+ var randomNumB = Math.random() * 151 - 75;
+ starCenter_x = (mouseX + randomNumA) || Math.ceil(Math.random() * 1024);
+ starCenter_y = (mouseY + randomNumB) || Math.ceil(Math.random() * 768);
+ ctx.lineWidth = 0.5 * LR;
+ 
+ for(var i = 0; i < 5; i++){
+                lx = starCenter_x + Math.cos(toRadian(startAngle + 72 * i)) * LR;
+ ly = starCenter_y - Math.sin(toRadian(startAngle + 72 * i)) * LR;
+ if(i == 0){
+                    ctx.moveTo(lx, ly);
+ }else{
+                    ctx.lineTo(lx, ly);
+ }
+                sx = starCenter_x + Math.cos(toRadian((startAngle + 36) + 72 * i)) * SR;
+ sy = starCenter_y - Math.sin(toRadian((startAngle + 36) + 72 * i)) * SR;
+ ctx.lineTo(sx, sy);
+ }
+ 
+            ctx.strokeStyle = colors[Math.floor(Math.random() * 11)];
+ ctx.fillStyle = colors[Math.floor(Math.random() * 11)];
+ }
+    </script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <style>
+        *{ 
+            margin:0;
+            padding:0;
+            border:0;
+        }
+        .stage{
+         
+             
+        }
+        .track-monitor{
+         
+            background-color:orange;
+        }
+        .track-pad{
+         
+            height:200px;
+            background-color:green;
+        }
+        .track-coordinate{
+             
+            background-color:purple;
+            color:white;
+            height:25px;
+            line-height:25px;
+            font-size:12px;
+        }
+        .track-coordinate-list{
+         
+            font-size:12px;
+            width:100%;
+            word-break:break-word;
+             
+        }
+    </style>
+    <script>
+        window.addEventListener('load',function(){
+         
+            var pad = document.getElementsByClassName('track-pad')[0]; // 绿
+            var monitor = document.getElementsByClassName('track-monitor')[0]; // 橙
+            var coordinate = document.getElementsByClassName('track-coordinate')[0]; // 紫
+            var clist = document.getElementsByClassName('track-coordinate-list')[0];    // 数值区
+            var reset = document.getElementsByTagName('button')[0]; // 重置按钮
+            var fixSize = function(){
+             
+                monitor.width = window.innerWidth;
+            };
+             
+            var context = monitor.getContext('2d');
+            var cset = [];
+              
+             
+            window.addEventListener('resize',function(){ fixSize(); });
+            var ev ; //鼠标事件全局变量
+
+            var line = {
+                sx: 0,
+                sy: 0,
+                ex: 0,
+                ey: 0,
+                color: '#cbd3db',
+                width: 10,
+                draw: function() {
+                    context.beginPath();
+                    context.moveTo(this.sx, this.sy);
+                    context.lineTo(this.ex, this.ey);
+                    // context.rect(this.sx,this.sy,10,20);
+                    var grd = context.createLinearGradient(this.sx,this.sy,this.ex,this.ey);
+                    grd.addColorStop(0,"#cbd3db");
+                    // grd.addColorStop(0.3,"red");
+                    // grd.addColorStop(0.5,"green");
+                    grd.addColorStop(1,"white");
+                    context.strokeStyle = grd;
+                    context.lineWidth = this.width;
+                    context.stroke();
+                }
+            }
+
+            pad.addEventListener('mousedown',function(e){
+                    ev = e;
+                    line.sx = e.x;
+                    line.sy = e.y;
+                    inter = setInterval(function(){
+                        interFun(ev);
+                    },50)
+            });
+            pad.addEventListener('mousemove',function(e){
+                ev = e ;
+            })
+            
+            pad.addEventListener('mouseup',function(e){
+                    clearInterval(inter);
+            })
+            
+            function clear() {
+                context.fillRect(0,0,pad.width,pad.height);
+            }
+
+            function interFun(e){
+                clear();
+                line.ex = e.x;
+                line.ey = e.y;
+                line.draw();
+                line.sx = e.x;
+                line.sy = e.y;
+            }
+
+            reset.addEventListener('click',function(){
+                 
+                fixSize();
+                cset = [];
+                clist.innerHTML = '';
+                coordinate.innerHTML='在绿色的方块中滑动鼠标';
+            });
+             
+            fixSize();
+             
+        });
+    </script>
+</head>
+<body>
+    <div class="stage">
+        <div class="track-pad"></div> <!--  绿色区域 -->
+        <canvas width="100" height="200" class="track-monitor"></canvas>    <!-- 橙色区域 -->
+        <div class="track-coordinate">在绿色的方块中滑动鼠标</div>
+        <button>重置</button>
+        <div class="track-coordinate-list"></div>
+    </div>
+</body>
+</html>
