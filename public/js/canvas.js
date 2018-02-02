@@ -1,6 +1,7 @@
 /**
  * Created by mwj on 2018/1/23.
  */
+
 const canvas = document.querySelector('#sc');
 const ctx = canvas.getContext('2d');
 const c = $('#sc');
@@ -8,8 +9,6 @@ const root = document.querySelector('#root');
 let nodes = [];
 let w = 0;
 let h = 0;
-
-
 
 window.requestAnimFrame = (function(){
   return  window.requestAnimationFrame       ||
@@ -44,7 +43,7 @@ $(document).ready(function () {
   }
 
   function update() {
-    console.log(nodes);
+    // console.log(nodes);
     for(let i = 0; i < nodes.length; i++){
       draw(i);
       if(nodes[i].radius - nodes[i].tRadius  > 0){
